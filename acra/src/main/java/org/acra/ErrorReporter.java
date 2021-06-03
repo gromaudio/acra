@@ -290,6 +290,11 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
                 .build(reportExecutor);
     }
 
+    public void handleReport(@NonNull ReportBuilder reportBuilder) {
+        performDeprecatedReportPriming();
+        reportBuilder.build(reportExecutor);
+    }
+
     /**
      * Enable or disable this ErrorReporter. By default it is enabled.
      *
@@ -376,5 +381,10 @@ public class ErrorReporter implements Thread.UncaughtExceptionHandler {
         } catch (Exception exceptionInRunnable) {
             ACRA.log.w(LOG_TAG, "Failed to initialize " + exceptionHandlerInitializer + " from #handleException");
         }
+    }
+
+    @NonNull
+    public ReportExecutor getReportExecutor() {
+        return reportExecutor;
     }
 }

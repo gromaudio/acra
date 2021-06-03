@@ -21,6 +21,12 @@ public final class ReportBuilder {
     private boolean sendSilently = false;
     private boolean endApplication = false;
 
+    private String stacktrace;
+    private String applicationLog;
+    private String logcat;
+    private String packageName;
+    private String appId;
+
     /**
      * Set the error message to be reported.
      *
@@ -135,6 +141,52 @@ public final class ReportBuilder {
 
     public boolean isEndApplication() {
         return endApplication;
+    }
+
+
+    public ReportBuilder setStacktrace(String stacktrace) {
+        this.stacktrace = stacktrace;
+        return this;
+    }
+
+    public ReportBuilder setApplicationLog(String applicationLog) {
+        this.applicationLog = applicationLog;
+        return this;
+    }
+
+    public ReportBuilder setLogcat(String logcat) {
+        this.logcat = logcat;
+        return this;
+    }
+
+    public ReportBuilder setPackageName(String packageName) {
+        this.packageName = packageName;
+        return this;
+    }
+
+    public ReportBuilder setAppId(String appId) {
+        this.appId = appId;
+        return this;
+    }
+
+    public String getStacktrace() {
+        return stacktrace;
+    }
+
+    public String getApplicationLog() {
+        return applicationLog;
+    }
+
+    public String getLogcat() {
+        return logcat;
+    }
+
+    public String getPackageName() {
+        return packageName;
+    }
+
+    public String getAppId() {
+        return appId;
     }
 
     /**
