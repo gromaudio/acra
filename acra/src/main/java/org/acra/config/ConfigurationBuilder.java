@@ -21,7 +21,6 @@ import android.support.annotation.NonNull;
 import org.acra.ACRA;
 import org.acra.ReportField;
 import org.acra.annotation.NoPropagation;
-import org.acra.dialog.CrashReportDialog;
 import org.acra.sender.HttpSender;
 
 import java.lang.reflect.Modifier;
@@ -33,7 +32,10 @@ import java.util.Map;
 import java.util.Set;
 
 import static org.acra.ACRA.LOG_TAG;
-import static org.acra.ACRAConstants.*;
+import static org.acra.ACRAConstants.DEFAULT_MAIL_REPORT_FIELDS;
+import static org.acra.ACRAConstants.DEFAULT_REPORT_FIELDS;
+import static org.acra.ACRAConstants.DEFAULT_RES_VALUE;
+import static org.acra.ACRAConstants.DEFAULT_STRING_VALUE;
 
 /**
  * Builder responsible for programmatic construction of an immutable {@link ACRAConfiguration}.
@@ -83,14 +85,14 @@ public final class ConfigurationBuilder extends BaseConfigurationBuilder<Configu
                 if (resNotifTickerText() == DEFAULT_RES_VALUE || resNotifTitle() == DEFAULT_RES_VALUE || resNotifText() == DEFAULT_RES_VALUE) {
                     throw new ACRAConfigurationException("NOTIFICATION mode: you have to define at least the resNotifTickerText, resNotifTitle, resNotifText parameters in your application @ReportsCrashes() annotation.");
                 }
-                if (CrashReportDialog.class.equals(reportDialogClass()) && resDialogText() == DEFAULT_RES_VALUE) {
+                /*if (CrashReportDialog.class.equals(reportDialogClass()) && resDialogText() == DEFAULT_RES_VALUE) {
                     throw new ACRAConfigurationException("NOTIFICATION mode: using the (default) CrashReportDialog requires you have to define the resDialogText parameter in your application @ReportsCrashes() annotation.");
-                }
+                }*/
                 break;
             case DIALOG:
-                if (CrashReportDialog.class.equals(reportDialogClass()) && resDialogText() == DEFAULT_RES_VALUE) {
+               /* if (CrashReportDialog.class.equals(reportDialogClass()) && resDialogText() == DEFAULT_RES_VALUE) {
                     throw new ACRAConfigurationException("DIALOG mode: using the (default) CrashReportDialog requires you to define the resDialogText parameter in your application @ReportsCrashes() annotation.");
-                }
+                }*/
                 break;
             default:
                 break;
@@ -100,7 +102,7 @@ public final class ConfigurationBuilder extends BaseConfigurationBuilder<Configu
             throw new ACRAConfigurationException("Report sender factories: using no report senders will make ACRA useless. Configure at least one ReportSenderFactory.");
         }
         checkValidity((Class[]) reportSenderFactoryClasses());
-        checkValidity(reportDialogClass(), reportPrimerClass(), retryPolicyClass(), keyStoreFactoryClass());
+        checkValidity(/*reportDialogClass(), */reportPrimerClass(), retryPolicyClass(), keyStoreFactoryClass());
 
         return new ACRAConfiguration(this);
     }

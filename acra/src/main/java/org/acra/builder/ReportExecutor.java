@@ -21,7 +21,6 @@ import org.acra.ReportingInteractionMode;
 import org.acra.collector.CrashReportData;
 import org.acra.collector.CrashReportDataFactory;
 import org.acra.config.ACRAConfiguration;
-import org.acra.dialog.CrashReportDialog;
 import org.acra.file.CrashReportPersister;
 import org.acra.file.ReportLocator;
 import org.acra.prefs.SharedPreferencesFactory;
@@ -402,10 +401,11 @@ public final class ReportExecutor {
     private Intent createCrashReportDialogIntent(@NonNull File reportFile, @NonNull ReportBuilder reportBuilder) {
         if (ACRA.DEV_LOGGING)
             ACRA.log.d(LOG_TAG, "Creating DialogIntent for " + reportFile + " exception=" + reportBuilder.getException());
-        final Intent dialogIntent = new Intent(context, config.reportDialogClass());
+        /*final Intent dialogIntent = new Intent(context, config.reportDialogClass());
         dialogIntent.putExtra(ACRAConstants.EXTRA_REPORT_FILE, reportFile);
         dialogIntent.putExtra(ACRAConstants.EXTRA_REPORT_EXCEPTION, reportBuilder.getException());
         dialogIntent.putExtra(ACRAConstants.EXTRA_REPORT_CONFIG, config);
-        return dialogIntent;
+        return dialogIntent;*/
+        return new Intent();
     }
 }

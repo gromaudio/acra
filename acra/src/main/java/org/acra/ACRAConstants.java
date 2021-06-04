@@ -19,7 +19,7 @@ import android.content.Context;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.StringRes;
 
-import org.acra.dialog.CrashReportDialog;
+//import org.acra.dialog.CrashReportDialog;
 import org.acra.model.Element;
 import org.acra.model.StringElement;
 
