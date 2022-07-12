@@ -88,6 +88,9 @@ final class ReportDistributor {
             // An issue occurred while sending this report but we can still try to
             // send other reports. Report sending is limited by ACRAConstants.MAX_SEND_REPORTS
             // so there's not much to fear about overloading a failing server.
+        } catch (OutOfMemoryError e) {
+            ACRA.log.e(LOG_TAG, "Failed to load crash report for " + reportFile, e);
+            IOUtils.deleteReport(reportFile);
         }
     }
 
