@@ -76,8 +76,9 @@ final class MemoryInfoCollector extends Collector {
      */
     @NonNull
     private static Element collectMemInfo() {
-
-        try {
+        // 5208
+        return ACRAConstants.NOT_AVAILABLE;
+        /*try {
             final List<String> commandLine = new ArrayList<String>();
             commandLine.add("dumpsys");
             commandLine.add("meminfo");
@@ -88,7 +89,7 @@ final class MemoryInfoCollector extends Collector {
         } catch (IOException e) {
             ACRA.log.e(LOG_TAG, "MemoryInfoCollector.meminfo could not retrieve data", e);
             return ACRAConstants.NOT_AVAILABLE;
-        }
+        }*/
     }
 
     /**
